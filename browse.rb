@@ -53,20 +53,20 @@ opts.parse(*ARGV)
 
 NSApplication.sharedApplication
 # Gives the App a Dock, allows windows
-# NSApplication.sharedApplication.activationPolicy = NSApplicationActivationPolicyRegular
+NSApplication.sharedApplication.activationPolicy = NSApplicationActivationPolicyRegular
 # Gives the main window focus
-# NSApplication.sharedApplication.activateIgnoringOtherApps(true)
+NSApplication.sharedApplication.activateIgnoringOtherApps(true)
 
-# class AppDelegate
-#   # Exits the script when the window is closed
-#   def applicationShouldTerminateAfterLastWindowClosed(app)
-#     true
-#   end
-# end
-# NSApplication.sharedApplication.delegate = AppDelegate.new
+class AppDelegate
+  # Exits the script when the window is closed
+  def applicationShouldTerminateAfterLastWindowClosed(app)
+    true
+  end
+end
+NSApplication.sharedApplication.delegate = AppDelegate.new
 
 # Enable the webkit development console
-# NSUserDefaults.standardUserDefaults.registerDefaults("WebKitDeveloperExtras" => true)
+NSUserDefaults.standardUserDefaults.registerDefaults("WebKitDeveloperExtras" => true)
 
 browser = Browser.new
 
