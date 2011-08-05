@@ -77,5 +77,4 @@ else
 end
 
 
-# NSApplication.sharedApplication.run
-NSRunLoop.currentRunLoop.runUntilDate(NSDate.distantFuture)
+NSApplication.sharedApplication.run
