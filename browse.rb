@@ -2,6 +2,7 @@ framework 'Cocoa'
 framework 'WebKit'
 
 require 'optparse'
+require 'pp'
 
 class Browser
   attr_accessor :view
@@ -26,6 +27,7 @@ class Browser
     view.preferences.plugInsEnabled = false
     view.mainFrame.frameView.allowsScrolling = true
     view.frameLoadDelegate = self
+    view.UIDelegate = self
   end
 
   def show(url, string)
@@ -37,11 +39,19 @@ class Browser
     view.mainFrame.loadRequest(NSURLRequest.requestWithURL(page_url))
   end
   
-  # Delegate methods
+  # Web Frame Load Delegate methods
   def webView(view, didFinishLoadForFrame: frame)
     @window.display
     @window.orderFrontRegardless
     @window.makeKeyWindow
+  end
+  
+  # Web UI Delegate methods
+  # Unfinished. Right now, this will display DOM information when mousing over an element.
+  def webView(view, mouseDidMoveOverElement: el, modifierFlags: flags)
+    puts "el"
+    pp el
+    puts "flags: #{flags}"
   end
 end
 
@@ -75,6 +85,5 @@ if STDIN.tty?
 else  
   browser.show(url, STDIN.read)
 end
-
 
 NSApplication.sharedApplication.run
