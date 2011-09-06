@@ -1,0 +1,27 @@
+h1. Browser.rb
+
+h2. Usage
+
+From parameters:
+
+<code>macruby browser_rb/browse.rb -u http://www.w3.org</code>
+
+From STDIN:
+
+<code>curl http://www.w3.org | macruby browser_rb/browse.rb -u http://www.w3.org</code>
+
+(the --url parameter allows you to specify the base URL so that assets with relative paths can be retrieved)
+
+h2. Purpose
+
+So you're programming and you have a string of HTML to process. Reading tags can make your eyes bleed. Wouldn't it be easier if we could just pipe some HTML to a browser and view it like normal people? Now you can with browse.rb!
+
+Well, really this is a first step. This is just a sample MacRuby program demonstrating a few things:
+
+# Using WebKit's WebViews from MacRuby.
+# Enabling the Javascript development tools.
+# Launching an application from the commandline that gets a window and a Dock icon.
+
+h2. Thanks
+
+This is adapted from code originally posted on Merbist (http://merbist.com/2010/10/19/macruby-webkit-and-js/). Also, thanks to Matt Aimonetti and Eloy Durán on the macruby-devel mailing list for some pointers.
